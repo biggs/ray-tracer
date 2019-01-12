@@ -69,3 +69,7 @@ inline vec3 unit_vector(const vec3 &v) {
 inline float dot(const vec3 &a, const vec3 &b) {
   return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
+
+inline vec3 sqrt(const vec3 &e) {
+  return vec3(sqrt(e[0]), sqrt(e[1]), sqrt(e[2]));
+}
