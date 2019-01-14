@@ -24,7 +24,6 @@ bool sphere::hit(const ray& r, float t_min, float t_max, hit_record& rec) const 
 
 	if (discrim > 0) {
 		float temp = (- b - sqrt(discrim)) / (2.0 * a);
-
 		if (temp < t_max && temp > t_min) {
 			rec.t = temp;
 			rec.p = r.point_at_parameter(temp);
