@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <iostream>
 
+#include "ray.h"
 #include "camera.h"
 #include "hitable.h"
 #include "hitablelist.h"
-#include "ray.h"
 #include "sphere.h"
 
 vec3 color(const ray& r, hitable *world, int depth) {
@@ -32,14 +32,15 @@ int main() {
 
   std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
-  camera cam;
-  hitable *list[5];
+  int obj_n = 5;
+  camera cam(vec3(-2, 2, 1), vec3(0, 0, -1), vec3(0, 1, 0), 30, float(nx)/float(ny));
+  hitable *list[obj_n];
   list[0] = new sphere(vec3(0, 0, -1), 0.5, new lambertian(vec3(0.8, 0.3, 0.3)));
   list[1] = new sphere(vec3(0, -100.5, -1), 100, new lambertian(vec3(0.8, 0.8, 0.0)));
   list[2] = new sphere(vec3(1, 0, -1), 0.5, new metal(vec3(0.8, 0.6, 0.2), 0.3));
   list[3] = new sphere(vec3(-1, 0, -1), 0.5, new dielectric(1.5));
   list[4] = new sphere(vec3(-1, 0, -1), -0.45, new dielectric(1.5));
-  hitable *world = new hitable_list(list, 5);
+  hitable *world = new hitable_list(list, obj_n);
 
   for (int j = 0; j < ny ; j++) {
     for (int i = 0; i < nx ; i++) {

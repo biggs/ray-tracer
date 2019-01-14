@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <iostream>
 
-
 class vec3 {
 public:
   vec3() {}
@@ -39,7 +38,7 @@ public:
   }
 
   float e[3];
-  };
+};
 
 inline vec3 operator+(const vec3 &v1, const vec3 &v2) {
   return vec3(v1.e[0] + v2.e[0], v1.e[1] + v2.e[1], v1.e[2] + v2.e[2]);
@@ -81,4 +80,10 @@ vec3 draw_from_unit_ball(void) {
     p = 2.0 * vec3(drand48(), drand48(), drand48()) - vec3(1.0, 1.0, 1.0);
   } while (p.length() >= 1.0);
   return p;
+}
+
+vec3 cross(const vec3& a, const vec3& b) {
+  return vec3(a[1] * b[2] - a[2] * b[1],
+              a[2] * b[0] - a[0] * b[2],
+              a[0] * b[1] - a[1] * b[0]);
 }

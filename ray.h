@@ -1,7 +1,12 @@
 #ifndef RAYH
 #define RAYH
+
 #include <math.h>
+
 #include "vec3.h"
+
+class vec3;
+
 
 class ray
 {
